@@ -16,6 +16,7 @@ defmodule Almond.Play do
     Voice.leave(id)
   end
 
+  Cogs.set_parser(:play, &List.wrap/1)
   Cogs.def play(url) do
     {:ok, id} = Cogs.guild_id()
     usr = message.author
@@ -24,6 +25,9 @@ defmodule Almond.Play do
     Voice.join(id, v_id)
 
     Voice.play_url(id, url)
+  end
+  Cogs.def play(vidname) do
+
   end
 
   Cogs.def skip do
@@ -40,4 +44,5 @@ defmodule Almond.Play do
 
     Voice.play_file(id, "lib/_deps/aaeeoo.mp3")
   end
+
 end
