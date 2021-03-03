@@ -4,7 +4,7 @@ defmodule Almond.Entertainment do
 
   Cogs.def meme do
     c_id = message.channel_id
-    n = Enum.random(1..24)
+    n = Enum.random(1..50)
     case Client.send_message(c_id, "", file: "lib/_deps/#{n}.png") do
       {:ok, _} ->
         :ok
@@ -37,5 +37,12 @@ defmodule Almond.Entertainment do
       _ ->
         Client.send_message(c_id, "", file: "lib/_deps/cats/#{n}.jpg")
       end
+  end
+
+  Cogs.def mandelbrot(color) do
+    Mainbrot.test(color)
+    #:timer.sleep(10000)
+    c_id = message.channel_id
+    Client.send_message(c_id, "", file: "mandelbrot.png")
   end
 end

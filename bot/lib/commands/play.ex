@@ -26,9 +26,6 @@ defmodule Almond.Play do
 
     Voice.play_url(id, url)
   end
-  Cogs.def play(vidname) do
-
-  end
 
   Cogs.def skip do
     {:ok, id} = Cogs.guild_id()
