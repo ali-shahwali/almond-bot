@@ -39,10 +39,14 @@ defmodule Almond.Entertainment do
       end
   end
 
-  Cogs.def mandelbrot(color) do
-    Mainbrot.test(color)
-    #:timer.sleep(10000)
+  Cogs.set_parser(:mandelbrot, &List.wrap/1)
+  Cogs.def mandelbrot(options) do
+    [width, height, color | _] = String.split(options)
+    {w, _} = Integer.parse(width)
+    {h, _} = Integer.parse(height)
+    Mainbrot.test(w, h, color)
     c_id = message.channel_id
     Client.send_message(c_id, "", file: "mandelbrot.png")
   end
+
 end

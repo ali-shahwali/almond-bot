@@ -8,9 +8,7 @@
 /deps/
 
 /lib/_deps/
-
 /lib/mandelbrot/
-
 # Where third-party dependencies like ExDoc output generated docs.
 /doc/
 
