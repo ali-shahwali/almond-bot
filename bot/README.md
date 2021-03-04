@@ -15,3 +15,6 @@
 #### !mandelbrot *left-x-coordinate* *right-x-coordinate* *y-coordinate* *height* *width* *color-complexity* *color*
 ##### Example below of !mandelbrot -0.73 -0.67 0.35 2160 1440 512 green
 ![alt text](https://i.imgur.com/5CXFHWb.png)
+
+
+###### And some more hidden features
