@@ -41,10 +41,15 @@ defmodule Almond.Entertainment do
 
   Cogs.set_parser(:mandelbrot, &List.wrap/1)
   Cogs.def mandelbrot(options) do
-    [width, height, color | _] = String.split(options)
+    [x0, xn, y0, width, height, depth, color | _] = String.split(options)
     {w, _} = Integer.parse(width)
     {h, _} = Integer.parse(height)
-    Mainbrot.test(w, h, color)
+    {d, _} = Integer.parse(depth)
+    {y, _} = Float.parse(y0)
+    {x1, _} = Float.parse(x0)
+    {x2, _} = Float.parse(xn)
+
+    Mainbrot.test(x1, x2, y, w, h, d, color)
     c_id = message.channel_id
     Client.send_message(c_id, "", file: "mandelbrot.png")
   end

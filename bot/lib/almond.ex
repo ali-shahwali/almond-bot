@@ -14,5 +14,6 @@ defmodule Almond do
     use Almond.Text
     use Almond.Play
     use Almond.Entertainment
+    use Almond.Help
    end
 end
