@@ -58,11 +58,11 @@ defmodule Almond.Entertainment do
     Cogs.say get_http(url)
   end
 
-  def get_http(url) do
+  defp get_http(url) do
     HTTPotion.start()
-
+    {:ok, key} = File.read("lib/_deps/w2g.txt")
     json_body =
-      Jason.encode!(%{"w2g_api_key" => "t2sfrth9gygq4n7qyiq5s265vx952ne7s6u95s3zdjfmk0vl2n1g8vzpnrcsx2q2", "share" => url, "bg_color" => "#000000", "bg_opacity" => "100"})
+      Jason.encode!(%{"w2g_api_key" => key, "share" => url, "bg_color" => "#000000", "bg_opacity" => "100"})
     %HTTPotion.Response{body: str} = HTTPotion.post("https://w2g.tv/rooms/create.json", [headers: ["Accept": "application/json", "Content-Type": "application/json"], body: json_body])
     str = String.split(str, ",")
     [_, e|_] = str

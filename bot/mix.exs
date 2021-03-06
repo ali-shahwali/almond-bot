@@ -22,6 +22,7 @@ defmodule Bot.MixProject do
   defp deps do
     [
       #{:poison, "~> 4.0.1", override: true},
+      {:google_api_you_tube, "~> 0.33"},
       {:jason, "~> 1.2"},
       {:httpotion, "~> 3.1.3"},
       {:tesla, "~> 1.4.0"},

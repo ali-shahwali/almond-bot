@@ -32,6 +32,19 @@ defmodule Almond.Play do
     spawn(fn -> play_thread(id, v_id, url) end)
   end
 
+  Cogs.set_parser(:p, &List.wrap/1)
+  Cogs.def p(keyword) do
+    link = get_vid(keyword)
+    url = "https://www.youtube.com/watch?v=#{link}"
+    Cogs.say "Now playing #{url}"
+
+    {:ok, id} = Cogs.guild_id()
+    usr = message.author
+    {:ok, v_state} = Cache.voice_state(id, usr.id)
+    v_id = v_state.channel_id
+    spawn(fn -> play_thread(id, v_id, url)end)
+  end
+
   Cogs.def skip do
     {:ok, id} = Cogs.guild_id()
     spawn(fn -> skip_thread(id) end)
@@ -59,4 +72,15 @@ defmodule Almond.Play do
     Voice.play_file(id, "lib/_deps/aaeeoo.mp3")
   end
 
+  def get_vid(keyword) do
+    {:ok, api_key} = File.read("lib/_deps/youtubeapi.txt")
+    %HTTPotion.Response{body: body} =
+      HTTPotion.get("https://www.googleapis.com/youtube/v3/search", query: %{key: api_key, part: "snippet", maxResults: 1,q: keyword,type: "video"})
+
+    [_, e|_] = String.split(body,"videoId")
+    [e1|_] = String.split(e, "}")
+    e1 = String.replace(e1, ~s("), "")
+    [_,link] = String.split(e1, ":")
+    String.trim(link)
+  end
 end
