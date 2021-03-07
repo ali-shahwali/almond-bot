@@ -20,7 +20,6 @@ defmodule Bot.MixProject do
 
   defp deps do
     [
-      {:quantum, "~> 3.0"},
       {:jason, "~> 1.2"},
       {:httpotion, "~> 3.1.3"},
       {:porcelain, "~> 2.0"},
