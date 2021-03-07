@@ -7,7 +7,11 @@
 # The directory Mix downloads your dependencies sources to.
 /deps/
 
+# other dependencies
+/lib/media/
+
 /lib/_deps/
+
 /lib/mandelbrot/
 # Where third-party dependencies like ExDoc output generated docs.
 /doc/

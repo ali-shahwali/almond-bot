@@ -4,18 +4,20 @@ defmodule Almond.Entertainment do
 
   Cogs.def meme do
     c_id = message.channel_id
-    n = Enum.random(1..50)
-    case Client.send_message(c_id, "", file: "lib/_deps/#{n}.png") do
-      {:ok, _} ->
-        :ok
-      _ ->
-        case Client.send_message(c_id, "", file: "lib/_deps/#{n}.jpg") do
-          {:ok, _} ->
-            :ok
-          _ ->
-            Client.send_message(c_id, "", file: "lib/_deps/#{n}.mp4")
-        end
-    end
+    img = rand_file("lib/media")
+    Client.send_message(c_id, "", file: "lib/media/#{img}")
+  end
+
+  Cogs.def upload do
+    [atch] = message.attachments
+    url = atch.proxy_url
+
+    split1 = String.split(url, "/")
+    split2 = String.split(List.last(split1), ".")
+    file_type = List.last(split2)
+    %HTTPoison.Response{body: body} = HTTPoison.get!(url)
+    n = folder_size("lib/media")
+    File.write!("lib/media/#{n}.#{file_type}", body)
   end
 
   Cogs.def sigmoid do
@@ -30,13 +32,8 @@ defmodule Almond.Entertainment do
 
   Cogs.def cat do
     c_id = message.channel_id
-    n = Enum.random(1..36)
-    case Client.send_message(c_id, "", file: "lib/_deps/cats/#{n}.png") do
-      {:ok, _} ->
-        :ok
-      _ ->
-        Client.send_message(c_id, "", file: "lib/_deps/cats/#{n}.jpg")
-      end
+    img = rand_file("lib/_deps/cats")
+    Client.send_message(c_id, "", file: "lib/_deps/cats/#{img}")
   end
 
   Cogs.set_parser(:mandelbrot, &List.wrap/1)
@@ -56,6 +53,16 @@ defmodule Almond.Entertainment do
 
   Cogs.def watch(url) do
     Cogs.say get_http(url)
+  end
+
+  defp rand_file(path) do
+    {:ok, files} = File.ls(path)
+    Enum.random(files)
+  end
+
+  defp folder_size(path) do
+    {:ok, files} = File.ls(path)
+    Kernel.length(files)
   end
 
   defp get_http(url) do
