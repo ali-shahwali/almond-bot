@@ -24,6 +24,7 @@ defmodule Almond.Play do
 
   Cogs.set_parser(:play, &List.wrap/1)
   Cogs.def play(url) do
+    
     {:ok, id} = Cogs.guild_id()
     usr = message.author
     {:ok, v_state} = Cache.voice_state(id, usr.id)

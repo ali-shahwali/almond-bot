@@ -14,8 +14,7 @@ defmodule Bot.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {Almond, []},
-      #applications: [:httpotion]
+      mod: {Almond, []}
     ]
   end
 
