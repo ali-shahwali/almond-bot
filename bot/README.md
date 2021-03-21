@@ -14,9 +14,7 @@
 #### !meme
 #### !upload *media attachment*
 #### !watch *url*
-#### !mandelbrot *left-x-coordinate* *right-x-coordinate* *y-coordinate* *height* *width* *color-complexity* *color*
-##### Example below of !mandelbrot -0.73 -0.67 0.35 2160 1440 512 green
-![alt text](https://i.imgur.com/5CXFHWb.png)
 
+#### Add it to your channel here: https://discord.com/api/oauth2/authorize?client_id=813163430021431322&permissions=0&scope=bot
 
 ###### And some more hidden features
