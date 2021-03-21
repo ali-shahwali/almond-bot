@@ -14,7 +14,8 @@
 #### !meme
 #### !upload *media attachment*
 #### !watch *url*
+###### And some more hidden features
 
 #### Add it to your channel here: https://discord.com/api/oauth2/authorize?client_id=813163430021431322&permissions=0&scope=bot
 
-###### And some more hidden features
+
