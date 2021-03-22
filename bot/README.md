@@ -1,6 +1,6 @@
 # Almond Bot
 
-[![Alchemy](https://img.shields.io/badge/alchemy-0.6.0-A56FBD.svg)](https://github.com/cronokirby/alchemy)
+[![Alchemy](https://img.shields.io/badge/Alchemy-0.6.0-A56FBD.svg)](https://github.com/cronokirby/alchemy)
 [![Porcelain](https://img.shields.io/badge/Porcelain-2.0-green)](https://github.com/alco/porcelain)
 [![HTTPotion](https://img.shields.io/badge/HTTPotion-3.1.3-blue)](https://github.com/unrelentingtech/httpotion)
 [![Jason](https://img.shields.io/badge/Jason-1.2-yellow)](https://github.com/michalmuskala/jason)
